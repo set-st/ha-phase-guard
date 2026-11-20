@@ -1,7 +1,12 @@
 {
   "domain": "phase_guard",
   "name": "Phase Guard",
-  "codeowners": ["@set-st"],
+  "categories": [
+    "energy.meters_monitoring"
+  ],
+  "codeowners": [
+    "@set-st"
+  ],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/set-st/ha-phase-guard",
