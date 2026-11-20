@@ -56,6 +56,18 @@ Other details:
 - An energy meter with **per-phase voltage** installed **before** the protection relays, which **loses power during a grid outage** (most mains-powered meters do). If your meter has its own backup power, outages will only be recognised when it reports ~0 V.
 - At least one indicator on each phase you want to monitor.
 
+## Tested with
+
+Developed and run on a real installation:
+
+- **Input meter:** [Smart MAIC](https://smart-maic.com) three-phase Wi-Fi energy meter at the service entrance, via the [Smart MAIC integration](https://github.com/krasnoukhov/homeassistant-smart-maic) (MQTT push every 5 s). It is mains-powered, so it goes silent during a grid outage — exactly what Phase Guard relies on.
+- **Indicators:**
+  - grid-input voltage of a **MUST** hybrid inverter (PH19 series), read over two independent channels (USB integration and ESPHome) to rule out false alarms from a single communication glitch;
+  - **Tuya** Wi-Fi smart plugs (voltage sensor + availability) and Tuya Wi-Fi wall switches (availability only).
+- **Protection:** per-phase voltage monitoring relays.
+
+The trip / outage classification was verified live with a simulated relay-side indicator and in offline scenario tests (`tests/test_logic.py`) that replay realistic timings: a meter reporting every 5 s, inverter voltage updating every ~15 s, Wi-Fi devices taking up to ~45 s to become unavailable.
+
 ## Installation
 
 ### HACS (recommended)
