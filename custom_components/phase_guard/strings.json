@@ -1,0 +1,95 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Phase Guard",
+        "description": "For every phase pick the voltage sensor of the house input — a meter installed BEFORE the phase protection relay — and one or more indicators AFTER the relay. Phases without indicators are not monitored.",
+        "data": {
+          "name": "Name",
+          "phase1_input": "Phase 1 — input voltage (before the relay)",
+          "phase1_indicators": "Phase 1 — indicators (after the relay)",
+          "phase2_input": "Phase 2 — input voltage (before the relay)",
+          "phase2_indicators": "Phase 2 — indicators (after the relay)",
+          "phase3_input": "Phase 3 — input voltage (before the relay)",
+          "phase3_indicators": "Phase 3 — indicators (after the relay)",
+          "input_min_voltage": "Input: minimum voltage for 'grid present'",
+          "indicator_min_voltage": "Indicators: minimum voltage for 'alive'",
+          "input_max_age": "Input data timeout",
+          "debounce": "Debounce"
+        },
+        "data_description": {
+          "phase1_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase1_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "phase2_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase2_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "phase3_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase3_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "input_min_voltage": "Input readings at or above this value mean the grid is present.",
+          "indicator_min_voltage": "Applies only to voltage-sensor indicators. Other entities count as alive while they are available.",
+          "input_max_age": "If the input sensor has not reported for longer than this, its data is treated as missing (the meter is probably unpowered).",
+          "debounce": "How long a phase must stay dead before an event is registered. Short blips are ignored."
+        }
+      }
+    },
+    "error": {
+      "no_indicators": "Select indicators for at least one phase."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Phase Guard",
+        "description": "Sensors and thresholds. The integration reloads after saving.",
+        "data": {
+          "phase1_input": "Phase 1 — input voltage (before the relay)",
+          "phase1_indicators": "Phase 1 — indicators (after the relay)",
+          "phase2_input": "Phase 2 — input voltage (before the relay)",
+          "phase2_indicators": "Phase 2 — indicators (after the relay)",
+          "phase3_input": "Phase 3 — input voltage (before the relay)",
+          "phase3_indicators": "Phase 3 — indicators (after the relay)",
+          "input_min_voltage": "Input: minimum voltage for 'grid present'",
+          "indicator_min_voltage": "Indicators: minimum voltage for 'alive'",
+          "input_max_age": "Input data timeout",
+          "debounce": "Debounce"
+        },
+        "data_description": {
+          "phase1_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase1_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "phase2_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase2_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "phase3_input": "Voltage sensor of a meter upstream of the protection relay. It must lose power (go silent) during a real grid outage.",
+          "phase3_indicators": "Voltage sensors after the relay, or any devices on this phase that become unavailable when they lose power. The phase counts as dead only when all of them are dead.",
+          "input_min_voltage": "Input readings at or above this value mean the grid is present.",
+          "indicator_min_voltage": "Applies only to voltage-sensor indicators. Other entities count as alive while they are available.",
+          "input_max_age": "If the input sensor has not reported for longer than this, its data is treated as missing (the meter is probably unpowered).",
+          "debounce": "How long a phase must stay dead before an event is registered. Short blips are ignored."
+        }
+      }
+    },
+    "error": {
+      "no_indicators": "Select indicators for at least one phase."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "phase": {
+        "name": "Phase {phase}",
+        "state": {
+          "normal": "Normal",
+          "protection_trip": "Protection tripped",
+          "grid_outage": "Grid outage",
+          "no_power": "No power"
+        }
+      },
+      "overall": {
+        "name": "Input status",
+        "state": {
+          "normal": "Normal",
+          "protection_trip": "Protection tripped",
+          "grid_outage": "Grid outage",
+          "no_power": "No power"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "domain": "phase_guard",
+  "name": "Phase Guard",
+  "codeowners": ["@set-st"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/set-st/ha-phase-guard",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/set-st/ha-phase-guard/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
